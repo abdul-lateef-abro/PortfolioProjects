@@ -46,7 +46,7 @@ order by TotalDeaths desc
 -- Showing continents with highest death count per population
 Select location, MAX(cast (total_deaths as int)) as TotalDeaths
 from PortfolioProject..CovidDeaths 
-where continent is null and location not like '%in%' and location not like 'World' and location not like '%Union'
+where continent is null and location not like '%international%' and location not like 'World' and location not like '%Union'
 group by location
 order by TotalDeaths desc
 
