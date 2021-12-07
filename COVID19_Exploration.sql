@@ -10,6 +10,7 @@ order by 1,2
 -- shows likelihood of dying if you contract COVID
 Select location, date, total_cases, new_cases, total_deaths, (total_deaths/total_cases)*100 as DeathPercentage
 from PortfolioProject..CovidDeaths 
+where continent is not null
 order by 1,2
 
 -- Looking at Total Cases vs Total Deaths in Pakistan
@@ -23,12 +24,14 @@ order by 1,2
 
 Select location, date, total_cases, population,  (total_cases/population)*100 as PercentPopulationInfected
 from PortfolioProject..CovidDeaths 
+where continent is not null
 order by 1,2
 
 
 -- Looking at Countries with Highest Infections rate compared to Population
 Select location, population, MAX(total_cases) as HighestInfectionCount, MAX((total_cases/population))*100 as PercentPopulationInfected
 from PortfolioProject..CovidDeaths 
+where continent is not null
 group by location, population
 order by PercentPopulationInfected desc
 
